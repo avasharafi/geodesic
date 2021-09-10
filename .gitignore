@@ -1,0 +1,77 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
+# Libs
+libig/
+glm/
+eigen/
+glad/
+learnopengl/
+
+
+# extera files
+temp.c
+temp.h
+glad.c
+
+
+# some extra objs
+bunny.off
+cube.off
+# Libs
+libig/
+glm/
+eigen/
+glad/
+learnopengl/
+
+
+# extera files
+temp.c
+temp.h
+glad.c
+
+
+# some extra objs
+bunny.off
+cube.off
+
+
+# extera files
+temp.c
+temp.h
+glad.c
+
+# xcode 
+*.xcodeproj
