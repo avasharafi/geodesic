@@ -32,14 +32,6 @@
 *.app
 
 
-# Libs
-libig/
-glm/
-eigen/
-glad/
-learnopengl/
-
-
 # extera files
 temp.c
 temp.h
@@ -49,29 +41,6 @@ glad.c
 # some extra objs
 bunny.off
 cube.off
-# Libs
-libig/
-glm/
-eigen/
-glad/
-learnopengl/
-
-
-# extera files
-temp.c
-temp.h
-glad.c
-
-
-# some extra objs
-bunny.off
-cube.off
-
-
-# extera files
-temp.c
-temp.h
-glad.c
 
 # xcode 
 *.xcodeproj
