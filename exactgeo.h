@@ -52,7 +52,7 @@ private:
 
 public:
     int exact_geodesic(std::string file){
-    
+            
       Eigen::MatrixXd V;
       Eigen::MatrixXi F;
       igl::opengl::glfw::Viewer viewer;
@@ -62,7 +62,8 @@ public:
 
       const auto update_distance = [&](const int vid)
       {
-        
+        auto geo_start = std::chrono::system_clock::now();
+
         Eigen::VectorXi VS,FS,VT,FT;
         // The selected vertex is the source
         VS.resize(1);
@@ -71,17 +72,15 @@ public:
         VT.setLinSpaced(V.rows(),0,V.rows()-1);
         Eigen::VectorXd d;
         std::cout<<"Computing geodesic distance to vertex "<<vid<<"..."<<std::endl;
-          
-      
-          
         igl::exact_geodesic(V,F,VS,FS,VT,FT,d);
-          
-
           
         // Plot the mesh
         set_colormap(viewer);
         viewer.data().set_data(d);
+        
           
+        auto geo_end = std::chrono::system_clock::now();
+          cout << " Compute geodesic distance in " << std::chrono::duration<double>(geo_end - geo_start).count() * 1000 << " ms" << endl;
           
       };
 
@@ -117,8 +116,15 @@ public:
 
       cout << "Click on mesh to define new source.\n" << std::endl;
       update_distance(0);
+        
+
+        
       return viewer.launch();
+        
     }
+    
+    
+
 
 };
 #endif /* exactgeo_h */

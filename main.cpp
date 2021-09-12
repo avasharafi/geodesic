@@ -7,15 +7,16 @@
 
 #include "geodesicDis.h"
 #include "heatgeo.h"
-#include "exactgeo.h"
+//#include "exactgeo.h"
 
 #include <chrono>
 #include <iostream>
 
-std::string file = "/Users/ava/Uni/BasicsLab/Projects/geodesic-clion-gcc/47984.obj";
+std::string file = "/Users/ava/Uni/BasicsLab/Projects/my-geodesic/my-geodesic/47984.obj";
+//std::string file = "/Users/ava/Uni/BasicsLab/Projects/my-geodesic/my-geodesic/bunny.obj";
+
 
 int main(int argc, char *argv[]){
-    
     
     
     GeodesicDis geoDis;

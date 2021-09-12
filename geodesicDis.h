@@ -567,8 +567,6 @@ public:
       // Load a mesh in OFF format
         igl::read_triangle_mesh(file, V, F);
 
-//        GeodesicDis geo;
-
 
         igl::opengl::glfw::Viewer viewer;
 
@@ -584,7 +582,6 @@ public:
               viewer.core().proj, viewer.core().viewport, V, F, fid, bc))
             {
                 Eigen::VectorXd D;
-                std::cout<<"face:\t"<<F.row(fid)<<std::endl;
              // if big mesh, just use closest vertex. Otherwise, blend distances to
              // vertices of face using barycentric coordinates.
                 if(F.rows()>100000){
@@ -612,7 +609,6 @@ public:
                  Eigen::Map<Eigen::VectorXd> Dc(ptr, V.rows());
                  D += Dc*bc(cid);
                }
-               std::cout<<"D:\t"<<D.rows()<<std::endl;
                viewer.data().set_data(D);
              }
 
@@ -624,8 +620,7 @@ public:
         viewer.callback_mouse_down =
           [&](igl::opengl::glfw::Viewer& viewer, int, int)->bool
         {
-          if(update())
-          {
+          if(update()){
             down_on_mesh = true;
             return true;
           }
@@ -634,8 +629,7 @@ public:
         viewer.callback_mouse_move =
           [&](igl::opengl::glfw::Viewer& viewer, int, int)->bool
           {
-            if(down_on_mesh)
-            {
+            if(down_on_mesh){
               update();
               return true;
             }
@@ -645,7 +639,7 @@ public:
           [&down_on_mesh](igl::opengl::glfw::Viewer& viewer, int, int)->bool
         {
           down_on_mesh = false;
-          return false;
+          return true;
         };
         std::cout<<R"(Usage:
         [click]  Click on shape to pick new geodesic distance source
@@ -653,6 +647,7 @@ public:
         D,d      Toggle using intrinsic Delaunay discrete differential operators
       )";
 
+    
         // Show mesh
         viewer.data().set_mesh(V, F);
         viewer.data().set_data(Eigen::VectorXd::Zero(V.rows()));
