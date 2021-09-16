@@ -597,16 +597,35 @@ public:
                propagation(file,vid,&dis);
 
                double* ptr = &dis[0];
+//               std::cout<<"\n\n dis\n\n"<<std::endl;
+//               for(int i=0;i<dis.size();i++)
+//                   std::cout<<dis[i]<<std::endl;
+               
                Eigen::Map<Eigen::VectorXd> D(ptr, V.rows());
+              dis.clear();
+
+               std::cout<<"\n\n first condition:\n\n";
+               for(int i=0;i<D.rows();i++)
+                   std::cout<<D.row(i)<<std::endl;
+               std::cout<<D.rows()<<std::endl;
                viewer.data().set_data(D);
+               
              }else{
                D = Eigen::VectorXd::Zero(V.rows());
 
                for(int cid = 0;cid<3;cid++){
                  const int vid = F(fid,cid);
+
                  propagation(file,vid,&dis);
                  double* ptr = &dis[0];
                  Eigen::Map<Eigen::VectorXd> Dc(ptr, V.rows());
+                 dis.clear();
+
+//                 std::cout<<"\n\n second condition:\n\n";
+//                 for(int i=0;i<D.rows();i++)
+//                       std::cout<<D.row(i)<<std::endl;
+                
+
                  D += Dc*bc(cid);
                }
                viewer.data().set_data(D);
